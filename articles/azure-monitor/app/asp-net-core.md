@@ -65,7 +65,7 @@ For Visual Studio for Mac use the [manual guidance](#enable-application-insights
 
     ```xml
         <ItemGroup>
-          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.16.0" />
+          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.17.0" />
         </ItemGroup>
     ```
 
