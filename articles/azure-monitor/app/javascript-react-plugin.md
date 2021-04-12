@@ -22,6 +22,7 @@ Install npm package:
 
 ```bash
 
+npm install @microsoft/applicationinsights-web
 npm install @microsoft/applicationinsights-react-js
 
 ```
@@ -121,12 +122,17 @@ This Context Provider will make Application Insights available as a `useContext`
 ```javascript
 import React from "react";
 import { useAppInsightsContext } from "@microsoft/applicationinsights-react-js";
+import { IMetricTelemetry } from "@microsoft/applicationinsights-web";
 
 const MyComponent = () => {
     const appInsights = useAppInsightsContext();
-    
-    appInsights.trackMetric("Component 'MyComponent' is in use");
-    
+    const metricData: IMetricTelemetry = {
+        average: 1,
+        name: "Component 'MyComponent' is in use",
+        sampleCount: 1,
+      };  
+    appInsights.trackMetric(metricData, {duration: "30ms"})
+   
     return (
         <h1>My Component</h1>
     );
