@@ -104,7 +104,7 @@ $wsn = Get-AzVirtualNetworkSubnetConfig -Name  Workload-SN -VirtualNetwork $test
 $NIC01 = New-AzNetworkInterface -Name Srv-Work -ResourceGroupName Test-FW-RG -Location "East us" -Subnet $wsn
 
 #Define the virtual machine
-$VirtualMachine = New-AzVMConfig -VMName Srv-Work -VMSize "Standard_DS2"
+$VirtualMachine = New-AzVMConfig -VMName Srv-Work -VMSize "Standard_D2s_v4"
 $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName Srv-Work -ProvisionVMAgent -EnableAutoUpdate
 $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC01.Id
 $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2019-Datacenter' -Version latest
