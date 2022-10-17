@@ -62,6 +62,17 @@ AzureDiagnostics
 ```
  
 ::: zone-end
+
+::: zone pivot="WAF-gateway"
+
+```kusto
+AzureDiagnostics
+| where Category == "ApplicationGatewayFirewallLog"
+| where TimeGenerated > ago(1d)
+| where action_s == 'Blocked'
+```
+ 
+::: zone-end
  
 In the `requestUri` field, you can see the request was made to `/api/Feedbacks/` specifically. Going further, we find the rule ID `942110` in the `ruleName` field. Knowing the rule ID, you could go to the [OWASP ModSecurity Core Rule Set Official Repository](https://github.com/coreruleset/coreruleset) and search by that [rule ID](https://github.com/coreruleset/coreruleset/blob/v3.1/dev/rules/REQUEST-942-APPLICATION-ATTACK-SQLI.conf) to review its code and understand exactly what this rule matches on. 
  
